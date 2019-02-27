@@ -1,6 +1,6 @@
 # flutter_book
 
-A new Flutter project.
+Flutter project(仿小说阅读, study).
 
 ## Getting Started
 
