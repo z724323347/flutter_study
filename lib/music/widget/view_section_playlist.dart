@@ -60,7 +60,7 @@ class SectionPlaylist extends StatelessWidget {
                 aspectRatio: 1,
                 child: FadeInImage(
                   placeholder: AssetImage("assets/playlist_playlist.9.png"),
-                  // image: NeteaseImage(playlist["picUrl"]),
+                  image: NeteaseImage(playlist["picUrl"]),
                   fadeInDuration: Duration.zero,
                   fadeOutDuration: Duration.zero,
                   fit: BoxFit.cover,
