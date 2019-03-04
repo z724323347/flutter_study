@@ -47,11 +47,6 @@ class SectionPlaylist extends StatelessWidget {
 
     return InkWell(
       onTap: () {
-        // Navigator.push(context, MaterialPageRoute(builder: (context) {
-        //   return PlaylistDetailPage(
-        //     playlist["id"],
-        //   );
-        // }));
         Toast.showCenter('InkWell');
       },
       onLongPress: onLongPress,
