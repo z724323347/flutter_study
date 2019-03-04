@@ -500,7 +500,7 @@ Map<DioErrorType, String> _errorMessages = {
   DioErrorType.RESPONSE: "服务器错误"
 };
 
-const _crypto = const MethodChannel('tech.soit.netease/crypto');
+const _crypto = const MethodChannel('flutter.music.netease/crypto');
 
 ///加密参数
 Future<Map> Function(dynamic, EncryptType) _encrypt = (any, type) async {

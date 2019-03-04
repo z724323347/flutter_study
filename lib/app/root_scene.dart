@@ -27,13 +27,13 @@ class _RootSceneState extends State<RootScene> {
     Image.asset('img/tab_bookshelf_n.png'),
     Image.asset('img/tab_bookstore_n.png'),
     Image.asset('img/tab_me_n.png'),
-    Image.asset('img/tab_me_n.png'),
+    Image.asset('img/tab_music_n.png'),
   ];
   List<Image> _tabSelectedImages = [
     Image.asset('img/tab_bookshelf_p.png'),
     Image.asset('img/tab_bookstore_p.png'),
     Image.asset('img/tab_me_p.png'),
-    Image.asset('img/tab_me_p.png'),
+    Image.asset('img/tab_music_p.png'),
   ];
 
   void initState() { 
