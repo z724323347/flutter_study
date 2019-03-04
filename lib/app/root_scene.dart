@@ -12,6 +12,7 @@ import 'e_color.dart';
 import 'package:flutter_book/home/home_scene.dart';
 import 'package:flutter_book/bookshelf/bookshelf_scene.dart';
 import 'package:flutter_book/me/me_scene.dart';
+import 'package:flutter_book/music/music_main_page_scene.dart';
 
 class RootScene extends StatefulWidget {
   _RootSceneState createState() => _RootSceneState();
@@ -26,10 +27,12 @@ class _RootSceneState extends State<RootScene> {
     Image.asset('img/tab_bookshelf_n.png'),
     Image.asset('img/tab_bookstore_n.png'),
     Image.asset('img/tab_me_n.png'),
+    Image.asset('img/tab_me_n.png'),
   ];
   List<Image> _tabSelectedImages = [
     Image.asset('img/tab_bookshelf_p.png'),
     Image.asset('img/tab_bookstore_p.png'),
+    Image.asset('img/tab_me_p.png'),
     Image.asset('img/tab_me_p.png'),
   ];
 
@@ -82,7 +85,8 @@ class _RootSceneState extends State<RootScene> {
         children: <Widget>[
           BookshelfScene(),
           HomeScene(),
-          MeScene()
+          MeScene(),
+          MusicMainPage()
         ],
         index: _tabIndex,
       ),
@@ -92,7 +96,8 @@ class _RootSceneState extends State<RootScene> {
         items:  <BottomNavigationBarItem>[
           BottomNavigationBarItem(icon: getTabIcon(0),title: Text('书架')),
           BottomNavigationBarItem(icon: getTabIcon(1),title: Text('书城')),
-          BottomNavigationBarItem(icon: getTabIcon(2),title: Text('我的'))
+          BottomNavigationBarItem(icon: getTabIcon(2),title: Text('我的')),
+          BottomNavigationBarItem(icon: getTabIcon(3),title: Text('音乐'))
         ],
         currentIndex: _tabIndex,
         onTap: (index){
