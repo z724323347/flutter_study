@@ -7,7 +7,7 @@ package com.soit.flutter.player
  *
  * please ensure that this enum values index the same as Dart enum PlayMode
  *
- * @author YangBin
+ * @author summer
  */
 enum class PlayMode {
     //单曲循环

@@ -18,8 +18,8 @@ import java.util.concurrent.atomic.AtomicBoolean
  * the player service which work on Background
  *
  *
- * author : YangBin
- * date   : 2017/12/27
+ * author : summer
+ * date   : 2019/3/1
  */
 class QuietPlayerService : Service() {
 

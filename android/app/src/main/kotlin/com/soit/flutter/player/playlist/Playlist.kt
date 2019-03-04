@@ -15,7 +15,7 @@ import com.soit.flutter.utils.log
  *
  * @param token token to identify this playlist
  *
- * @author yangbinyhbn@gmail.com
+ * @author summer
  */
 open class Playlist(
         val token: String
