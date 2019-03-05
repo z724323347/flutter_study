@@ -16,7 +16,7 @@ import '../part/part.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 export 'netease_image.dart';
-// export 'netease_local_data.dart';
+export 'netease_local_data.dart';
 
 NeteaseRepository neteaseRepository = NeteaseRepository._private();
 
@@ -126,47 +126,47 @@ class NeteaseRepository {
     user.value = null;
   }
 
-  // ///根据用户ID获取歌单
-  // ///PlayListDetail 中的 tracks 都是空数据
-  // Future<List<PlaylistDetail>> userPlaylist(int userId,
-  //     [int offset = 0, int limit = 1000]) async {
-  //   final response = await doRequest("/weapi/user/playlist",
-  //       {"offset": offset, "uid": userId, "limit": limit, "csrf_token": ""});
-  //   if (responseVerify(response).isSuccess) {
-  //     final list = (response["playlist"] as List)
-  //         .cast<Map>()
-  //         .map((e) => PlaylistDetail.fromJson(e))
-  //         .toList();
-  //     neteaseLocalData.updateUserPlaylist(userId, list);
-  //     return list;
-  //   }
-  //   return null;
-  // }
+  ///根据用户ID获取歌单
+  ///PlayListDetail 中的 tracks 都是空数据
+  Future<List<PlaylistDetail>> userPlaylist(int userId,
+      [int offset = 0, int limit = 1000]) async {
+    final response = await doRequest("/weapi/user/playlist",
+        {"offset": offset, "uid": userId, "limit": limit, "csrf_token": ""});
+    if (responseVerify(response).isSuccess) {
+      final list = (response["playlist"] as List)
+          .cast<Map>()
+          .map((e) => PlaylistDetail.fromJson(e))
+          .toList();
+      neteaseLocalData.updateUserPlaylist(userId, list);
+      return list;
+    }
+    return null;
+  }
 
-  // ///create new playlist by [name]
-  // Future<PlaylistDetail> createPlaylist(String name) async {
-  //   final response = await doRequest(
-  //       "https://music.163.com/weapi/playlist/create", {"name": name},
-  //       options: Options(headers: {"User-Agent": _chooseUserAgent(ua: "pc")}));
-  //   if (responseVerify(response).isSuccess) {
-  //     return PlaylistDetail.fromJson(response["playlist"]);
-  //   }
-  //   return Future.error(response["msg"] ?? "error:${response["code"]}");
-  // }
+  ///create new playlist by [name]
+  Future<PlaylistDetail> createPlaylist(String name) async {
+    final response = await doRequest(
+        "https://music.163.com/weapi/playlist/create", {"name": name},
+        options: Options(headers: {"User-Agent": _chooseUserAgent(ua: "pc")}));
+    if (responseVerify(response).isSuccess) {
+      return PlaylistDetail.fromJson(response["playlist"]);
+    }
+    return Future.error(response["msg"] ?? "error:${response["code"]}");
+  }
 
-  // ///根据歌单id获取歌单详情，包括歌曲
-  // Future<PlaylistDetail> playlistDetail(int id) async {
-  //   final response = await doRequest(
-  //       "https://music.163.com/weapi/v3/playlist/detail",
-  //       {"id": "$id", "n": 100000, "s": 8},
-  //       type: EncryptType.linux);
-  //   if (responseVerify(response).isSuccess) {
-  //     final result = PlaylistDetail.fromJson(response["playlist"]);
-  //     neteaseLocalData.updatePlaylistDetail(result);
-  //     return result;
-  //   }
-  //   return null;
-  // }
+  ///根据歌单id获取歌单详情，包括歌曲
+  Future<PlaylistDetail> playlistDetail(int id) async {
+    final response = await doRequest(
+        "https://music.163.com/weapi/v3/playlist/detail",
+        {"id": "$id", "n": 100000, "s": 8},
+        type: EncryptType.linux);
+    if (responseVerify(response).isSuccess) {
+      final result = PlaylistDetail.fromJson(response["playlist"]);
+      neteaseLocalData.updatePlaylistDetail(result);
+      return result;
+    }
+    return null;
+  }
 
   ///id 歌单id
   ///return true if action success
@@ -315,28 +315,28 @@ class NeteaseRepository {
     return responseVerify(result).isSuccess;
   }
 
-//   ///update playlist name and description
-//   Future<bool> updatePlaylist(PlaylistDetail playlist) async {
-//     final response = await doRequest(
-//         "https://music.163.com/weapi/batch",
-//         {
-//           "/api/playlist/desc/update": json
-//               .encode({"id": playlist.id, "desc": playlist.description ?? ""}),
-// //          "/api/playlist/tags/update":
-// //              json.encode({"id": playlist.id, "tags": playlist.tags ?? ""}),
-//           "/api/playlist/update/name":
-//               json.encode({"id": playlist.id, "name": playlist.name}),
-//         },
-//         options: Options(headers: {"User-Agent": _chooseUserAgent(ua: "pc")}));
-//     debugPrint("response :$response");
-//     if (!responseVerify(response).isSuccess) {
-//       bool success = response["/api/playlist/desc/update"]["code"] == 200 &&
-// //          response["/api/playlist/tags/update"]["code"] == 200 &&
-//           response["/api/playlist/update/name"]["code"] == 200;
-//       return success;
-//     }
-//     return Future.error(response["msg"] ?? "失败");
-//   }
+  ///update playlist name and description
+  Future<bool> updatePlaylist(PlaylistDetail playlist) async {
+    final response = await doRequest(
+        "https://music.163.com/weapi/batch",
+        {
+          "/api/playlist/desc/update": json
+              .encode({"id": playlist.id, "desc": playlist.description ?? ""}),
+//          "/api/playlist/tags/update":
+//              json.encode({"id": playlist.id, "tags": playlist.tags ?? ""}),
+          "/api/playlist/update/name":
+              json.encode({"id": playlist.id, "name": playlist.name}),
+        },
+        options: Options(headers: {"User-Agent": _chooseUserAgent(ua: "pc")}));
+    debugPrint("response :$response");
+    if (!responseVerify(response).isSuccess) {
+      bool success = response["/api/playlist/desc/update"]["code"] == 200 &&
+//          response["/api/playlist/tags/update"]["code"] == 200 &&
+          response["/api/playlist/update/name"]["code"] == 200;
+      return success;
+    }
+    return Future.error(response["msg"] ?? "失败");
+  }
 
   ///获取歌手信息和单曲
   Future<Map> artistDetail(int artistId) async {

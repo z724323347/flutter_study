@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 
 import '../part/loader.dart';
 import '../repository/netease.dart';
+import '../page/page_playlist_detail.dart';
+
 import 'package:flutter_book/public.dart';
 
 class SectionPlaylist extends StatelessWidget {
@@ -48,6 +50,12 @@ class SectionPlaylist extends StatelessWidget {
     return InkWell(
       onTap: () {
         Toast.showCenter('InkWell');
+        Navigator.push(context, MaterialPageRoute(builder: (context) {
+          return PlaylistDetailPage(
+            playlist['id'],
+          );
+        }));
+
       },
       onLongPress: onLongPress,
       child: Container(

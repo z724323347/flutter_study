@@ -29,3 +29,6 @@ library public;
  export 'package:flutter_book/model/novel.dart';
  export 'package:flutter_book/model/novel_comment.dart';
  export 'package:flutter_book/model/chapter.dart';
+
+ export 'package:flutter_book/model/music.dart';
+ export 'package:flutter_book/model/playlist_detail.dart';
