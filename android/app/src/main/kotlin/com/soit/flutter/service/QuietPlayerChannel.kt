@@ -136,7 +136,7 @@ class QuietPlayerChannel(private val channel: MethodChannel) : MethodChannel.Met
                     player.playWhenReady = call.arguments()
                     result.success(null)
                 }
-                "playWithQinDing" -> {
+                "playWith" -> {
                     //token , list , music argument must not be null
                     val music = Music(call.arguments<HashMap<String, Any>>())
                     player.play(music)
@@ -182,7 +182,7 @@ class QuietPlayerChannel(private val channel: MethodChannel) : MethodChannel.Met
                 "getPrevious" -> {
                     result.success(player.playlist.getPrevious(player.current)?.map)
                 }
-                "quiet" -> {
+                "dispose" -> {
                     player.quiet()
                     result.success(null)
                 }

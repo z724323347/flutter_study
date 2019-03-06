@@ -20,33 +20,36 @@ const String PREF_KEY_PLAY_MODE = 'flutter_player_mode';
 
 MusicPlayer flutterPlay = MusicPlayer._private();
 
-class MusicPlayer implements ValueNotifier<PlayerControllerState> {
 
-  MusicPlayer._private() :super() {
-    ()async {
-      var preference =await SharedPreferences.getInstance();
+
+class MusicPlayer implements ValueNotifier<PlayerControllerState> {
+  MusicPlayer._private() : super() {
+    () async {
+      //load former player information from SharedPreference
+      var preference = await SharedPreferences.getInstance();
       Music current;
       List<Music> playingList;
       String token;
       PlayMode playMode;
       try {
-        current =Music.fromMap(json.decode(preference.get(PREF_KEY_PLAYING)));
-        token =preference.get(PREF_KEY_TOKEN);
-        playingList= (json.decode(preference.get(PREF_KEY_PLAYLIST)) as List)
-              .cast<Map>()
-              .map(Music.fromMap)
-              .toList();
-        
+        current = Music.fromMap(json.decode(preference.get(PREF_KEY_PLAYING)));
+        token = preference.get(PREF_KEY_TOKEN);
+        playingList = (json.decode(preference.get(PREF_KEY_PLAYLIST)) as List)
+            .cast<Map>()
+            .map(Music.fromMap)
+            .toList();
+        playMode = PlayMode.values[preference.getInt(PREF_KEY_PLAY_MODE) ?? 0];
       } catch (e) {
         debugPrint(e.toString());
       }
 
-      debugPrint('loaded :  $current');
-      debugPrint('loaded :  $playingList');
-      debugPrint('loaded :  $token');
-      debugPrint('loaded :  $playMode');
+      debugPrint("loaded : $current");
+      debugPrint("loaded : $playingList");
+      debugPrint("loaded : $token");
+      debugPrint("loaded : $playMode");
 
-      addListener((){
+      //save player info to SharedPreference
+      addListener(() {
         if (current != value.current) {
           preference.setString(PREF_KEY_PLAYING,
               json.encode(value.current, toEncodable: (e) => e.toMap()));
@@ -66,262 +69,251 @@ class MusicPlayer implements ValueNotifier<PlayerControllerState> {
           token = value.token;
         }
       });
-      controller.init(playingList, current, token, playMode);
+      _controller.init(
+          playingList, current, token, playMode ?? PlayMode.sequence);
     }();
-
   }
 
+  PlayerController get _controller => playerController;
 
-  PlayerController get controller => playerController;
-
+  ///play a single song
   Future<void> play({Music music}) async {
+    music = music ?? value.current;
     if (music == null) {
+      //null music, null current playing, this is an error state
       return;
     }
     if (!value.playingList.contains(music)) {
+      //playing list do not contain music
+      //so we insert this music to next of current playing
       await insertToNext(music);
     }
-    await performPlay(music);
+    await _performPlay(music);
   }
 
+  ///insert a music to [value.current] next position
   Future<void> insertToNext(Music music) {
     return insertToNext2([music]);
   }
 
   Future<void> insertToNext2(List<Music> list) async {
-    final playingList =List.of(value.playingList);
+    final playingList = List.of(value.playingList);
     playingList.removeWhere((m) => list.contains(m));
 
-    final index=playingList.indexOf(value.current);
+    final index = playingList.indexOf(value.current) + 1;
     playingList.insertAll(index, list);
-    await controller.updatePlaylist(playingList, value.token);
+    await _controller.updatePlaylist(playingList, value.token);
   }
 
   Future<void> removeFromPlayingList(Music music) async {
     if (!value.playingList.contains(music)) {
       return;
     }
-    final list =List.of(value.playingList);
+    final list = List.of(value.playingList);
     list.remove(music);
-    await controller.updatePlaylist(list, value.token);
+    await _controller.updatePlaylist(list, value.token);
   }
 
   Future<void> playWithList(Music music, List<Music> list, String token) async {
-    debugPrint('playWithList  ${list.map((m) => m.title).join(",")}');
-    debugPrint('playWithList token = $token');
+    debugPrint("playWithList ${list.map((m) => m.title).join(",")}");
+    debugPrint("playWithList token = $token");
     assert(list != null && token != null);
     if (list.isEmpty) {
       return;
     }
     if (music == null) {
-      music =list.first;
+      music = list.first;
     }
-    await controller.updatePlaylist(list, token);
-    await controller.playWith(music);
+    await _controller.updatePlaylist(list, token);
+    await _controller.playWith(music);
   }
 
-
-  Future<void> performPlay(Music music) async {
+  //perform to play music
+  Future<void> _performPlay(Music music) async {
     assert(music != null);
 
-    if (value.current ==music &&
-          controller.value.playbackState !=PlaybackState.none) {
-
-      return await controller.setPlayWhenReady(true);
+    if (value.current == music &&
+        _controller.value.playbackState != PlaybackState.none) {
+      return await _controller.setPlayWhenReady(true);
     }
-    
-    assert(music.url !=null &&
-            music.url.isNotEmpty, 'music url can not be null');
-    return await controller.playWith(music);
+    assert(
+        music.url != null && music.url.isNotEmpty, "music url can not be null");
+    return await _controller.playWith(music);
   }
 
   Future<void> pause() {
-    return controller.setPlayWhenReady(false);
+    return _controller.setPlayWhenReady(false);
   }
 
-  void dispose_player() {
-    controller.dispose();
+  void quiet() {
+    _controller.dispose();
   }
 
   Future<void> playNext() async {
-    await controller.playNext();
+    await _controller.playNext();
   }
 
   Future<void> playPrevious() async {
-    await controller.playPrevious();
+    await _controller.playPrevious();
   }
 
+  ///might be null
   Future<Music> getNext() {
-    return controller.getNext();
+    return _controller.getNext();
   }
 
+  ///might be null
   Future<Music> getPrevious() {
-    return controller.getPrevious();
+    return _controller.getPrevious();
   }
 
+  ///seek to position in milliseconds
   Future<void> seekTo(int position) {
-    return controller.seekTo(position);
+    return _controller.seekTo(position);
   }
 
   Future<void> setVolume(double volume) {
-    return controller.setVolume(volume);
+    return _controller.setVolume(volume);
   }
 
+  ///change playlist play mode
+  ///[PlayMode]
   Future<void> changePlayMode() {
-    PlayMode next =PlayMode.values[(value.playMode.index + 1) % 3];
-    return controller.setPlayMode(next);
-  }
-
-  
-  @override
-  PlayerControllerState get value => controller.value;
-
-  @override
-  void addListener(listener) {
-    controller.addListener(listener);
+    PlayMode next = PlayMode.values[(value.playMode.index + 1) % 3];
+    return _controller.setPlayMode(next);
   }
 
   @override
-  void dispose() {
-    // TODO: implement dispose
-    controller.dispose();
+  PlayerControllerState get value => _controller.value;
+
+  @override
+  void addListener(VoidCallback listener) {
+    _controller.addListener(listener);
   }
 
   @override
-  // TODO: implement hasListeners
-  bool get hasListeners => controller.hasListeners;
+  void removeListener(VoidCallback listener) {
+    _controller.removeListener(listener);
+  }
+
+  @override
+  void dispose() => _controller.dispose();
+
+  @override
+  bool get hasListeners => _controller.hasListeners;
 
   @override
   void notifyListeners() {
-    // TODO: implement notifyListeners
-    controller.notifyListeners();
+    _controller.notifyListeners();
   }
 
   @override
-  void removeListener(listener) {
-    // TODO: implement removeListener
-    controller.removeListener(listener);
-  }
-
-  @override
-  void set value(PlayerControllerState newValue) {
-    // TODO: implement value
-    throw 'Unsupported operation';
-  }
-  
+  set value(PlayerControllerState newValue) => throw "Unsupported operation";
 }
 
+class Quiet extends StatefulWidget {
+  Quiet({@Required() this.child, Key key}) : super(key: key);
 
-class FluttetPlay extends StatefulWidget {
   final Widget child;
 
-  FluttetPlay({Key key, @Required() this.child}) : super(key: key);
-
-  _FluttetPlayState createState() => _FluttetPlayState();
+  @override
+  State<StatefulWidget> createState() => _QuietState();
 }
 
-class _FluttetPlayState extends State<FluttetPlay> {
-
+class _QuietState extends State<Quiet> {
   PlayerControllerState value;
 
-  void onPlayerChange() {
+  void _onPlayerChange() {
     setState(() {
-     value = flutterPlay.value; 
-     if (value.hasError) {
-       showSimpleNotification(
-          context,Text('播放 ${value.current?.title ?? ''} 失败'),
-          // icon:Icon(Icons.error),
-          background: Theme.of(context).errorColor,
-       );
-     }
+      value = flutterPlay.value;
+      if (value.hasError) {
+        showSimpleNotification(
+            context, Text("播放歌曲${value.current?.title ?? ""}失败!"),
+            background: Theme.of(context).errorColor);
+      }
     });
   }
 
   @override
   void initState() {
-    // TODO: implement initState
-    value =flutterPlay.value;
-    flutterPlay.addListener(onPlayerChange);
+    value = flutterPlay.value;
+    flutterPlay.addListener(_onPlayerChange);
     super.initState();
   }
 
   @override
   void dispose() {
-    // TODO: implement dispose
     super.dispose();
-    flutterPlay.removeListener(onPlayerChange);
+    flutterPlay.removeListener(_onPlayerChange);
   }
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-       child: widget.child,
+    return PlayerState(
+      child: widget.child,
+      value: value,
     );
   }
 }
 
 class PlayerState extends InheritedModel<PlayerStateAspect> {
+  PlayerState({@required Widget child, @required this.value})
+      : super(child: child);
 
-  PlayerState({@required Widget child, @required this.value}) :super(child:child);
-
+  ///get current playing music
   final PlayerControllerState value;
 
   static PlayerState of(BuildContext context, {PlayerStateAspect aspect}) {
-    return context.inheritFromWidgetOfExactType(PlayerState,aspect:aspect);
+    return context.inheritFromWidgetOfExactType(PlayerState, aspect: aspect);
   }
 
   @override
   bool updateShouldNotify(PlayerState oldWidget) {
-    // TODO: implement updateShouldNotify
     return value != oldWidget.value;
   }
 
   @override
   bool updateShouldNotifyDependent(
-            PlayerState oldWidget, Set<PlayerStateAspect> dependencies) {
-
-    // TODO: implement updateShouldNotifyDependent
+      PlayerState oldWidget, Set<PlayerStateAspect> dependencies) {
     if (dependencies.contains(PlayerStateAspect.position) &&
-          (value.position !=oldWidget.value.position)) {
+        (value.position != oldWidget.value.position)) {
       return true;
     }
-
-    if (dependencies.contains(PlayerStateAspect.playBackState) &&
-          ((value.playbackState !=oldWidget.value.playbackState) || 
-          (value.playWhenReady !=oldWidget.value.playWhenReady ||
-          value.hasError !=oldWidget.value.hasError))) {
-      return true;
-    }   
-
-    if (dependencies.contains(PlayerStateAspect.playlist) && 
-          (value.playingList !=oldWidget.value.playingList)) {
-      return true;
-    }       
-
-    if (dependencies.contains(PlayerStateAspect.music) && 
-          (value.current !=oldWidget.value.current)) {
+    if (dependencies.contains(PlayerStateAspect.playbackState) &&
+        ((value.playbackState != oldWidget.value.playbackState) ||
+            (value.playWhenReady != oldWidget.value.playWhenReady ||
+                value.hasError != oldWidget.value.hasError))) {
       return true;
     }
-
-    if (dependencies.contains(PlayerStateAspect.playMode) && 
-          (value.playMode !=oldWidget.value.playMode)) {
+    if (dependencies.contains(PlayerStateAspect.playlist) &&
+        (value.playingList != oldWidget.value.playingList)) {
       return true;
     }
-   
-   return false;
-   
+    if (dependencies.contains(PlayerStateAspect.music) &&
+        (value.current != oldWidget.value.current)) {
+      return true;
+    }
+    if (dependencies.contains(PlayerStateAspect.playMode) &&
+        (value.playMode) != oldWidget.value.playMode) {
+      return true;
+    }
+    return false;
   }
-  
 }
 
 enum PlayerStateAspect {
+  ///the position of playing
   position,
 
-  playBackState,
+  ///the playing state
+  playbackState,
 
+  ///the current playing
   music,
 
+  ///the current playing playlist
   playlist,
 
+  ///the play mode of playlist
   playMode,
 }

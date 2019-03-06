@@ -9,8 +9,8 @@ import '../channel/channel_palette_generator.dart';
 
 import '../page/page_playlist_detail_header.dart';
 import '../page/page_playlist_detail_playlist_header.dart';
-import '../page/pag_playlist_detail_opcitytitle.dart';
-import '../page/pag_playlist_detile_listbody.dart';
+import '../page/page_playlist_detail_opcitytitle.dart';
+import '../page/page_playlist_detail_listbody.dart';
 
 
 import 'package:flutter_book/public.dart';
