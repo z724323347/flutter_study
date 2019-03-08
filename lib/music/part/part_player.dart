@@ -30,9 +30,6 @@ class BoxWithBottomPlayerController extends StatelessWidget {
 }
 
 class BottomControllerBar extends StatelessWidget {
-  final Widget child;
-
-  BottomControllerBar({Key key, this.child}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

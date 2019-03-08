@@ -61,7 +61,7 @@ class MusicNotification {
      *
      * when player paused,the notification will be cancelAble for user and will stop foreground service.
      *
-     * @param service the com.soit.flutter.ui.service.QuietPlayerService
+     * @param service the com.soit.flutter.ui.service.PlayerService
      */
     fun update(service: Service) {
         checkNotification(
@@ -180,31 +180,31 @@ class MusicNotification {
     }
 
     private fun buildPlaybackAction(which: Int): PendingIntent {
-        val intent = Intent(context, QuietPlayerService::class.java)
+        val intent = Intent(context, PlayerService::class.java)
         val action: PendingIntent
         when (which) {
             0 -> {
-                intent.action = QuietPlayerService.action_like
+                intent.action = PlayerService.action_like
                 action = PendingIntent.getService(context, 0, intent, 0)
             }
             1 -> {
-                intent.action = QuietPlayerService.action_play_previous
+                intent.action = PlayerService.action_play_previous
                 action = PendingIntent.getService(context, 1, intent, 0)
             }
             2 -> {
-                intent.action = QuietPlayerService.action_play_pause
+                intent.action = PlayerService.action_play_pause
                 action = PendingIntent.getService(context, 2, intent, 0)
             }
             3 -> {
-                intent.action = QuietPlayerService.action_play_next
+                intent.action = PlayerService.action_play_next
                 action = PendingIntent.getService(context, 3, intent, 0)
             }
             4 -> {
-                intent.action = QuietPlayerService.action_exit
+                intent.action = PlayerService.action_exit
                 action = PendingIntent.getService(context, 4, intent, 0)
             }
             5 -> {
-                intent.action = QuietPlayerService.action_dislike
+                intent.action = PlayerService.action_dislike
                 action = PendingIntent.getService(context, 5, intent, 0)
             }
             else -> error("")

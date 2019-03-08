@@ -12,7 +12,7 @@ class SectionPlaylist extends StatelessWidget {
   Widget build(BuildContext context) {
     return Loader<Map>(
       loadTask: () => neteaseRepository.personalizedPlaylist(limit: 6),
-      resultVerify: neteaseRepository.responseVerify,
+      // resultVerify: neteaseRepository.responseVerify,
       builder: (context, result) {
         List<Map> list = (result["result"] as List).cast();
         return GridView.count(
@@ -68,7 +68,7 @@ class SectionPlaylist extends StatelessWidget {
               child: AspectRatio(
                 aspectRatio: 1,
                 child: FadeInImage(
-                  placeholder: AssetImage("assets/playlist_playlist.9.png"),
+                  placeholder: AssetImage("img/playlist_playlist.9.png"),
                   image: NeteaseImage(playlist["picUrl"]),
                   fadeInDuration: Duration.zero,
                   fadeOutDuration: Duration.zero,
@@ -76,12 +76,15 @@ class SectionPlaylist extends StatelessWidget {
                 ),
               ),
             ),
-            Padding(padding: EdgeInsets.only(top: 4)),
-            Text(
-              playlist["name"],
-              maxLines: 2,
-              overflow: TextOverflow.ellipsis,
+            Padding(padding: EdgeInsets.only(top: 2)),
+            SingleChildScrollView(
+              child: Text(
+                playlist["name"],
+                maxLines: 2,
+                overflow: TextOverflow.ellipsis,
+              ),
             ),
+            
           ],
         ),
       ),

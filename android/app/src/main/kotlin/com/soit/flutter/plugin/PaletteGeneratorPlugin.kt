@@ -14,7 +14,7 @@ class PaletteGeneratorPlugin : MethodChannel.MethodCallHandler {
 
     companion object {
 
-        private const val NAME = "com.soit.flutter/palette"
+        private const val NAME = "flutter.native/palette"
 
         fun registerWith(registrar: PluginRegistry.Registrar) {
             val plugin = PaletteGeneratorPlugin()

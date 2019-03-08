@@ -21,7 +21,7 @@ import java.util.concurrent.atomic.AtomicBoolean
  * author : summer
  * date   : 2019/3/1
  */
-class QuietPlayerService : Service() {
+class PlayerService : Service() {
 
     companion object {
 
@@ -56,16 +56,16 @@ class QuietPlayerService : Service() {
         const val action_dislike = "dislike"
 
 
-        /** flag that [QuietPlayerService] is Running */
+        /** flag that [PlayerService] is Running */
         private val serviceRunning: AtomicBoolean = AtomicBoolean()
 
 
         /**
-         * ensure [QuietPlayerService] is Running
+         * ensure [PlayerService] is Running
          */
         fun ensureServiceRunning(context: Context = AppContext) {
             if (!serviceRunning.get()) {
-                context.startService(Intent(context, QuietPlayerService::class.java))
+                context.startService(Intent(context, PlayerService::class.java))
             }
         }
 
@@ -83,13 +83,13 @@ class QuietPlayerService : Service() {
             if (music == null) {
                 stopForeground(true)
             }
-            notificationHelper.update(this@QuietPlayerService)
+            notificationHelper.update(this@PlayerService)
         }
     }
 
     private val playerEventListener = object : Player.EventListener {
         override fun onPlayerStateChanged(playWhenReady: Boolean, playbackState: Int) {
-            notificationHelper.update(this@QuietPlayerService)
+            notificationHelper.update(this@PlayerService)
         }
     }
 

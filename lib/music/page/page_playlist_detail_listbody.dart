@@ -60,14 +60,14 @@ class _PlaylistBodyState extends State<PlaylistBody> {
   Widget build(BuildContext context) {
     return Stack(
       children: <Widget>[
-        BoxWithBottomPlayerController(
-          ListView.builder(
-            padding: const EdgeInsets.all(0),
-            itemCount: 1 + (songTitleProvider?.size ?? 0),
-            itemBuilder: buildList,
-            controller: scrollController,
-          ),
-        ),
+        // BoxWithBottomPlayerController(
+        //   ListView.builder(
+        //     padding: const EdgeInsets.all(0),
+        //     itemCount: 1 + (songTitleProvider?.size ?? 0),
+        //     itemBuilder: buildList,
+        //     controller: scrollController,
+        //   ),
+        // ),
         Column(
           children: <Widget>[
             OpacityTitle(

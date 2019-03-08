@@ -4,6 +4,7 @@ import '../widget/view_item_navigator.dart';
 import '../widget/view_section_playlist.dart';
 import '../widget/view_section_newsong.dart';
 import '../part/part_music_list_provider.dart';
+import '../part/part.dart';
 import 'package:flutter_book/public.dart';
 
 class MainCloudPage extends StatefulWidget {

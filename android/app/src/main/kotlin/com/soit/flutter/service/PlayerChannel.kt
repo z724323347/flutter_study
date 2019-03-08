@@ -21,7 +21,7 @@ import com.soit.flutter.utils.log
  * if dart vm reload: call 'init', to synchronize data with Platform and Flutter
  *
  */
-class QuietPlayerChannel(private val channel: MethodChannel) : MethodChannel.MethodCallHandler {
+class PlayerChannel(private val channel: MethodChannel) : MethodChannel.MethodCallHandler {
 
 
     companion object {
@@ -30,9 +30,9 @@ class QuietPlayerChannel(private val channel: MethodChannel) : MethodChannel.Met
 
         private var initialized = false
 
-        fun registerWith(registrar: PluginRegistry.Registrar): QuietPlayerChannel {
+        fun registerWith(registrar: PluginRegistry.Registrar): PlayerChannel {
             val methodChannel = MethodChannel(registrar.messenger(), CHANNEL_ID)
-            val quietPlayerChannel = QuietPlayerChannel(methodChannel)
+            val quietPlayerChannel = PlayerChannel(methodChannel)
             methodChannel.setMethodCallHandler(quietPlayerChannel)
             return quietPlayerChannel
         }

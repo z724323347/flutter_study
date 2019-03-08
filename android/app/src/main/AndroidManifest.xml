@@ -38,7 +38,7 @@
             </intent-filter>
         </activity>
 
-        <service android:name=".player.service.QuietPlayerService" />
+        <service android:name=".player.service.PlayerService" />
 
     </application>
 </manifest>

@@ -5,7 +5,7 @@ import android.os.Bundle
 import io.flutter.app.FlutterActivity
 import io.flutter.plugins.GeneratedPluginRegistrant
 import com.soit.flutter.plugin.PluginRegistrant
-import com.soit.flutter.service.QuietPlayerChannel
+import com.soit.flutter.service.PlayerChannel
 
 class MainActivity : FlutterActivity() {
 
@@ -20,13 +20,13 @@ class MainActivity : FlutterActivity() {
 
     }
 
-    private lateinit var playerChannel: QuietPlayerChannel
+    private lateinit var playerChannel: PlayerChannel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         GeneratedPluginRegistrant.registerWith(this)
         PluginRegistrant.registerWith(this)
-        playerChannel = QuietPlayerChannel.registerWith(registrarFor("com.soit.flutter.service.QuietPlayerChannel"))
+        playerChannel = PlayerChannel.registerWith(registrarFor("com.soit.flutter.service.PlayerChannel"))
         route(intent)
     }
 

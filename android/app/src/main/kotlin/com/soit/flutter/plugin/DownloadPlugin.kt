@@ -38,7 +38,7 @@ class DownloadPlugin(
 
     companion object {
 
-        private const val CHANNEL_NAME = "com.soit.flutter/Download"
+        private const val CHANNEL_NAME = "flutter.native/download"
 
         const val DEFAULT_DOWNLOAD_PATH = "sdcard/music"
 

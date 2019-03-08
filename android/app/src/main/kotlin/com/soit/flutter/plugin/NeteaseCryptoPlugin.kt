@@ -18,6 +18,7 @@ import javax.crypto.spec.SecretKeySpec
  * e-mail : yangbinyhbn@gmail.com
  * time   : 2017/8/22
  * desc   : 改编自 https://github.com/Binaryify/NeteaseCloudMusicApi/blob/master/util/crypto.js
+ *        ：复用开源项目插件构造
  */
 object NeteaseCryptoPlugin {
     private const val keys = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"

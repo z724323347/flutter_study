@@ -12,7 +12,7 @@ import com.soit.flutter.BuildConfig
 
 private val DEBUG get() = BuildConfig.DEBUG
 
-private const val TAG = "QUIET"
+private const val TAG = "FLUTTER_NATIVE"
 
 fun logError(error: Throwable?) {
     error ?: return

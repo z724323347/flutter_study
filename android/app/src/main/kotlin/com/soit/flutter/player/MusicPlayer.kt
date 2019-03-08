@@ -1,6 +1,5 @@
 package com.soit.flutter.player
 
-import android.content.Intent
 import android.net.Uri
 import com.google.android.exoplayer2.ExoPlayerFactory
 import com.google.android.exoplayer2.Player
@@ -18,7 +17,7 @@ import com.soit.flutter.AppContext
 import com.soit.flutter.player.playlist.Playlist
 import com.soit.flutter.utils.LoggerLevel
 import com.soit.flutter.utils.log
-import com.soit.flutter.player.service.QuietPlayerService.Companion.ensureServiceRunning
+import com.soit.flutter.player.service.PlayerService.Companion.ensureServiceRunning
 import kotlin.properties.Delegates
 
 /**
