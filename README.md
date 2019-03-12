@@ -1,6 +1,6 @@
 # flutter_book
 
-Flutter project(仿小说阅读, study).
+Flutter project(仿小说阅读 + 音乐播放, study used).
 
 ## Getting Started
 
