@@ -49,7 +49,7 @@ class SectionPlaylist extends StatelessWidget {
 
     return InkWell(
       onTap: () {
-        Toast.showCenter('InkWell');
+        ToastUtil.showCenter('InkWell');
         Navigator.push(context, MaterialPageRoute(builder: (context) {
           print('id = {$playlist}');
           return PlaylistDetailPage(

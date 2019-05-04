@@ -79,7 +79,7 @@ class _HomeListViewState extends State<HomeListView> with AutomaticKeepAliveClie
       });
       
     } catch (e) {
-      Toast.showCenter(e.toString());
+      ToastUtil.showCenter(e.toString());
     }
   }
 

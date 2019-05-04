@@ -17,7 +17,7 @@ class MeHeader extends StatelessWidget {
         if (UserManager.instance.isLogin) {
           //已经登录， 点击查看个人信息
           print('已经登录， 点击查看个人信息');
-          Toast.showCenter('已登录');
+          ToastUtil.showCenter('已登录');
         }else {
           //未登录， 点击进入登陆页面
           print('未登录， 点击进入登陆页面');

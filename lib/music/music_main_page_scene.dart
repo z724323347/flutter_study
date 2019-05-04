@@ -80,7 +80,7 @@ class _MusicMainPageState extends State<MusicMainPage> with
         actions: <Widget>[
           IconButton(
             onPressed: (){
-              Toast.showCenter('search');
+              ToastUtil.showCenter('search');
             },
             icon: Icon(Icons.search),
           ),
@@ -103,7 +103,7 @@ class _MusicMainPageState extends State<MusicMainPage> with
         actions: <Widget>[
           IconButton(
             onPressed: (){
-              Toast.showCenter('search');
+              ToastUtil.showCenter('search');
             },
             icon: Icon(Icons.search),
           ),

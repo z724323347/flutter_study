@@ -79,14 +79,14 @@ class _PlaylistBodyState extends State<PlaylistBody> {
                   icon: Icon(Icons.search),
                   tooltip: '歌单内搜索',
                   onPressed: (){
-                    Toast.showCenter('search');
+                    ToastUtil.showCenter('search');
                   },
                 ),
                 IconButton(
                   icon: Icon(Icons.more_vert),
                   tooltip: '更多选项',
                   onPressed: (){
-                    Toast.showCenter('功能未开发');
+                    ToastUtil.showCenter('功能未开发');
                   },
                 ),
               ],

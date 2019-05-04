@@ -42,7 +42,7 @@ class BottomControllerBar extends StatelessWidget {
     return InkWell(
       onTap: () {
         if (music != null) {
-          Toast.showCenter('正在播放歌曲 ${music}');
+          ToastUtil.showCenter('正在播放歌曲 ${music}');
         }
       },
       child: Card(

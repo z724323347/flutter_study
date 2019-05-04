@@ -30,7 +30,7 @@ class LoginSceneState extends State {
       });
       coldDown();
     } catch (e) {
-      Toast.show(e.toString());
+      ToastUtil.show(e.toString());
     }
   }
 
@@ -47,7 +47,7 @@ class LoginSceneState extends State {
 
       Navigator.pop(context);
     } catch (e) {
-      Toast.show(e.toString());
+      ToastUtil.show(e.toString());
     }
   }
 

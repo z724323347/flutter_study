@@ -19,7 +19,7 @@ class _MeSceneState extends State<MeScene> {
             title: '钱包',
             iconName: 'img/me_wallet.png',
             onPressed: (){
-              Toast.showCenter('钱包');
+              ToastUtil.showCenter('钱包');
             },
           ),
 
@@ -43,7 +43,7 @@ class _MeSceneState extends State<MeScene> {
             title: '关于',
             iconName: 'img/me_buy.png',
             onPressed: (){
-              Toast.show('about ');
+              ToastUtil.show('about ');
             },
           ),
         ],

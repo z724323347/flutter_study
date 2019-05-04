@@ -120,7 +120,7 @@ class _ReaderSceneState extends State<ReaderScene> with RouteAware{
 
   previousPage() async {
     if (pageIndex == 0 && article.preArticleId == 0) {
-      Toast.showCenter('已经在第一页');
+      ToastUtil.showCenter('已经在第一页');
       return;
     }
 
@@ -142,7 +142,7 @@ class _ReaderSceneState extends State<ReaderScene> with RouteAware{
 
   nextPage() async {
     if (pageIndex >=article.pageCount - 1 && article.nextArticleId == 0) {
-      Toast.showCenter('已经是最后一页了');
+      ToastUtil.showCenter('已经是最后一页了');
       return;
     }
 

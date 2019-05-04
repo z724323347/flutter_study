@@ -20,7 +20,7 @@ class NovelDetailToolbar extends StatelessWidget {
           Expanded(
             child: GestureDetector(
               onTap: (){
-                Toast.showCenter('添加操作，未处理');
+                ToastUtil.showCenter('添加操作，未处理');
               },
               child: Container(
                 height: 40,
@@ -56,7 +56,7 @@ class NovelDetailToolbar extends StatelessWidget {
           Expanded(
             child: GestureDetector(
               onTap: (){
-                Toast.showCenter('点击了下载， 未处理下载事件');
+                ToastUtil.showCenter('点击了下载， 未处理下载事件');
               },
               child: Center(
                 child: Text(

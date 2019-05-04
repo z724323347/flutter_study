@@ -26,7 +26,7 @@ class SongTitleProvider {
   void _playAll(BuildContext context) {
     if (flutterPlay.value.token == token && flutterPlay.value.isPlaying) {
       //打开音乐播放页面
-      Toast.showCenter('打开音乐播放页面');
+      ToastUtil.showCenter('打开音乐播放页面');
     } else {
       flutterPlay.playWithList(musics[0], musics, token);
     }
@@ -38,7 +38,7 @@ class SongTitleProvider {
         flutterPlay.value.isPlaying &&
         flutterPlay.value.current == toPlay) {
         //打开音乐播放页面
-        Toast.showCenter('打开音乐播放页面 ing');
+        ToastUtil.showCenter('打开音乐播放页面 ing');
     } else {
       flutterPlay.playWithList(toPlay, musics, token);
     }
@@ -222,7 +222,7 @@ class SongTile extends StatelessWidget {
         flutterPlay.insertToNext(music);
         break;
       case SongPopupMenuType.comment:
-        Toast.showCenter('comment page \n评论');
+        ToastUtil.showCenter('comment page \n评论');
         break;
       case SongPopupMenuType.delete:
         bool delete = await showDialog<bool>(
@@ -267,13 +267,13 @@ class SongTile extends StatelessWidget {
         }
         break;
       case SongPopupMenuType.album:
-        Toast.showCenter('AlbumDetailPage');
+        ToastUtil.showCenter('AlbumDetailPage');
         break;
       case SongPopupMenuType.artists:
-        Toast.showCenter('artists');
+        ToastUtil.showCenter('artists');
         break;
       case SongPopupMenuType.download:
-        Toast.showCenter('download');
+        ToastUtil.showCenter('download');
         break;
     }
   }
@@ -400,7 +400,7 @@ class _MvIcon extends StatelessWidget {
             child: Icon(Icons.videocam),
           ),
           onTap: () {
-            Toast.showCenter('mv !');
+            ToastUtil.showCenter('mv !');
           }),
     );
   }

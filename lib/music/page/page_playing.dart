@@ -334,7 +334,7 @@ class OpertionBar extends StatelessWidget {
             if (music == null) {
               return;
             }
-            Toast.showCenter('进入 comment page');
+            ToastUtil.showCenter('进入 comment page');
           },
         ),
         IconButton(
@@ -725,7 +725,7 @@ class _CloudLyricState extends State<CloudLyric> {
       loadTask: () async {
         final str =await neteaseRepository.lyric(widget.music.id);
         if (str == null) {
-          Toast.showCenter('暂未歌词');
+          ToastUtil.showCenter('暂未歌词');
           throw '暂无歌词';
         }
         return LyricContent.from(str);

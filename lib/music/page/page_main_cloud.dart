@@ -83,7 +83,7 @@ class NavigationLine extends StatelessWidget {
           }),
           ItemNavigator(Icons.surround_sound, "歌单", () {
             // Navigator.pushNamed(context, ROUTE_DAILY);
-            Toast.showCenter('ItemNavigator(Icons.today, 歌单)');
+            ToastUtil.showCenter('ItemNavigator(Icons.today, 歌单)');
           }),
           ItemNavigator(Icons.show_chart, "排行榜", () {
             // Navigator.pushNamed(context, ROUTE_LEADERBOARD);

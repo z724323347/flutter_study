@@ -137,7 +137,7 @@ class _NovelDetailSceneState extends State<NovelDetailScene> with RouteAware{
       });
 
     } catch (e) {
-      Toast.showCenter(e.toString());
+      ToastUtil.showCenter(e.toString());
     }
   }
 

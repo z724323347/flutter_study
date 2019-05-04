@@ -25,21 +25,21 @@ class PlaylistDetailHeader extends StatelessWidget {
       commentCount: playlist.commentCount,
       shareCount: playlist.shareCount,
       onCommentTap: (){
-        Toast.showCenter('commet');
+        ToastUtil.showCenter('commet');
       },
       onSelectionTap: () async {
         if (musicList == null) {
           showSimpleNotification(context,Text('未添加,稍后再试'));
         }else {
-          Toast.showCenter('进入选择页面');
+          ToastUtil.showCenter('进入选择页面');
         }
       },
       onDownloadTap: musicList?.isEmpty ==true
             ? null
             :(){
-              Toast.showCenter('downloading');
+              ToastUtil.showCenter('downloading');
       },
-      onShareTap: () => Toast.show('分享'),
+      onShareTap: () => ToastUtil.show('分享'),
 
       content: Container(
         height: 150,
@@ -102,7 +102,7 @@ class PlaylistDetailHeader extends StatelessWidget {
                   ),
                   SizedBox(height: 20),
                   InkWell(
-                    onTap: () => {Toast.showCenter('功能未完成')},
+                    onTap: () => {ToastUtil.showCenter('功能未完成')},
                     child: Padding(
                       padding: const EdgeInsets.only(top: 4, bottom: 4),
                       child: Row(
