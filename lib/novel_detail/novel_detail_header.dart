@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:cached_network_image/cached_network_image.dart';
+// import 'package:cached_network_image/cached_network_image.dart';
 import 'dart:ui' as ui;
 
 import 'package:flutter_book/public.dart';
@@ -20,8 +20,9 @@ class NovelDetailHeader extends StatelessWidget {
       height: height,
       child: Stack(
         children: <Widget>[
-          Image(
-            image: CachedNetworkImageProvider(novel.imgUrl),
+          Image.network(
+            // image: CachedNetworkImageProvider(novel.imgUrl),
+            '${novel.imgUrl}',
             fit: BoxFit.fitWidth,
             width: width,
             height: height,

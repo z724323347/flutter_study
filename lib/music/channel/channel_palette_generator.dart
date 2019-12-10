@@ -18,19 +18,19 @@ class PaletteGenerator {
     
     void imageListener(ImageInfo info, bool synCall) {
       loadFailureTimeout?.cancel();
-      stream.removeListener(imageListener);
+      // stream.removeListener(imageListener);
       imageCompleter.complete(info.image);
     }
 
     if (timeout !=Duration.zero) {
       loadFailureTimeout =Timer(timeout, (){
-        stream.removeListener(imageListener);
+        // stream.removeListener(imageListener);
         imageCompleter.completeError(
           TimeoutException('Timeout trying to load form $imageProvider'),
         );
       });
     }
-    stream.addListener(imageListener);
+    // stream.addListener(imageListener);
     ui.Image image =await imageCompleter.future;
     ByteData data =await image.toByteData(format:  ui.ImageByteFormat.png);
 

@@ -7,7 +7,7 @@ import android.app.PendingIntent
 import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
-import android.support.v4.app.NotificationCompat
+import androidx.core.app.NotificationCompat
 import com.tonyodev.fetch2.*
 import com.tonyodev.fetch2core.DownloadBlock
 import com.tonyodev.fetch2core.Downloader

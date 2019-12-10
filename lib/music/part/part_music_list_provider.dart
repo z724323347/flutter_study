@@ -259,9 +259,9 @@ class SongTile extends StatelessWidget {
             return;
           }
           if (succeed) {
-            showSimpleNotification(context, Text("已添加到收藏"));
+            showSimpleNotification(Text("已添加到收藏"));
           } else {
-            showSimpleNotification(context, Text("收藏歌曲失败!"),
+            showSimpleNotification( Text("收藏歌曲失败!"),
                 background: Theme.of(context).errorColor);
           }
         }

@@ -29,7 +29,7 @@ class PlaylistDetailHeader extends StatelessWidget {
       },
       onSelectionTap: () async {
         if (musicList == null) {
-          showSimpleNotification(context,Text('未添加,稍后再试'));
+          showSimpleNotification(Text('未添加,稍后再试'));
         }else {
           ToastUtil.showCenter('进入选择页面');
         }

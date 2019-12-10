@@ -2,7 +2,7 @@ package com.soit.flutter.plugin
 
 import android.graphics.BitmapFactory
 import android.graphics.Color
-import android.support.v7.graphics.Palette
+import androidx.palette.graphics.Palette
 import io.flutter.plugin.common.MethodCall
 import io.flutter.plugin.common.MethodChannel
 import io.flutter.plugin.common.PluginRegistry
@@ -48,7 +48,7 @@ class PaletteGeneratorPlugin : MethodChannel.MethodCallHandler {
             log { "generate bitmap failed" }
             return@async null
         }
-        val palette = Palette.from(bitmap).generate()
+        val palette = androidx.palette.graphics.Palette.from(bitmap).generate()
         return@async palette.mutedSwatch?.rgb
                 ?: palette.darkMutedSwatch?.rgb
                 ?: palette.darkVibrantSwatch?.rgb

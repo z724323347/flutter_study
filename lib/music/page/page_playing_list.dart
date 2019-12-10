@@ -57,9 +57,9 @@ class PlaylistDialog extends StatelessWidget {
                   return;
                 }
                 if (succeed) {
-                  showSimpleNotification(context,Text('添加到收藏夹成功'));
+                  showSimpleNotification(Text('添加到收藏夹成功'));
                 } else {
-                  showSimpleNotification(context,Text('添加到收藏夹失败'),
+                  showSimpleNotification(Text('添加到收藏夹失败'),
                   background: Theme.of(context).errorColor);
                 }
               },

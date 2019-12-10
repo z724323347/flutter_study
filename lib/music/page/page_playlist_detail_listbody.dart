@@ -128,9 +128,9 @@ class _PlaylistBodyState extends State<PlaylistBody> {
                 setState(() {
                  widget.playlist.musicList.removeAt(index - 2) ;
                 });
-                showSimpleNotification(context,Text('成功删除'));
+                showSimpleNotification(Text('成功删除'));
               } else {
-                showSimpleNotification(context,Text('删除失败'),
+                showSimpleNotification(Text('删除失败'),
                   background: Theme.of(context).errorColor);
               }  
             });
@@ -147,9 +147,9 @@ class _PlaylistBodyState extends State<PlaylistBody> {
 
     String action = !subscribe ? '收藏':'取消收藏';
     if (succeed) {
-      showSimpleNotification(context, Text('$action成功}'));
+      showSimpleNotification( Text('$action成功}'));
     } else {
-      showSimpleNotification(context, Text('$action失败'),
+      showSimpleNotification( Text('$action失败'),
           background: Theme.of(context).errorColor);
     }
     return succeed ? !subscribe :subscribe;

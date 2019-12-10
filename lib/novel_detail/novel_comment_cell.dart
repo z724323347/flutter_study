@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'package:cached_network_image/cached_network_image.dart';
+// import 'package:cached_network_image/cached_network_image.dart';
 
 import 'package:flutter_book/public.dart';
 
@@ -34,7 +34,7 @@ class NovelCommentCell extends StatelessWidget {
             children: <Widget>[
               CircleAvatar(
                 radius: 15,
-                backgroundImage: CachedNetworkImageProvider(comment.avatar),
+                // backgroundImage: CachedNetworkImageProvider(comment.avatar),
               ),
               SizedBox(width: 10),
               Text(comment.nickName, style:TextStyle(fontSize: 14, color:EColor.gray)),

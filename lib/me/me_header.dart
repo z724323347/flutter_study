@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:cached_network_image/cached_network_image.dart';
+// import 'package:cached_network_image/cached_network_image.dart';
 
 import 'package:flutter_book/public.dart';
 import 'login_scene.dart';
@@ -31,7 +31,7 @@ class MeHeader extends StatelessWidget {
           children: <Widget>[
             CircleAvatar(
               radius: 40,
-              backgroundImage: user?.avatarUrl != null ? CachedNetworkImageProvider(user.avatarUrl) :AssetImage('img/placeholder_avatar.png'),
+              // backgroundImage: user?.avatarUrl != null ? CachedNetworkImageProvider(user.avatarUrl) :AssetImage('img/placeholder_avatar.png'),
             ),
             SizedBox(width: 25),
             Expanded(

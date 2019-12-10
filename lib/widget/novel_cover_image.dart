@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:cached_network_image/cached_network_image.dart';
+// import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter_book/public.dart';
 
 class NovelCoverImage extends StatelessWidget {
@@ -13,8 +13,9 @@ class NovelCoverImage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      child: Image(
-        image: CachedNetworkImageProvider(imgUrl),
+      child: Image.network(
+        // image: CachedNetworkImageProvider(imgUrl),
+        '${imgUrl}',
         fit: BoxFit.cover,
         width: width,
         height: height,

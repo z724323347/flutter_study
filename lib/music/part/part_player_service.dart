@@ -227,8 +227,7 @@ class _QuietState extends State<Quiet> {
     setState(() {
       value = flutterPlay.value;
       if (value.hasError) {
-        showSimpleNotification(
-            context, Text("播放歌曲${value.current?.title ?? ""}失败!"),
+        showSimpleNotification(Text("播放歌曲${value.current?.title ?? ""}失败!"),
             background: Theme.of(context).errorColor);
       }
     });

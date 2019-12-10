@@ -27,6 +27,6 @@ export '../repository/netease.dart';
 // export 'netease/counter.dart';
 
 void notImplemented(BuildContext context) {
-  showSimpleNotification(context, Text("页面未完成"),
+  showSimpleNotification( Text("页面未完成"),
       background: Color(0xFFd2dd37), foreground: Colors.black);
 }
