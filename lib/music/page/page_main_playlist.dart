@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_book/test/index.dart';
 
 class MainPlaylistPage extends StatefulWidget {
   final Widget child;
@@ -13,7 +14,7 @@ class _MainPlaylistPageState extends State<MainPlaylistPage>
   @override
   Widget build(BuildContext context) {
     return Container(
-       child: Text('MainPlaylistPage'),
+       child: TestIndexPage(),
     );
   }
 

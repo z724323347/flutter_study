@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_book/global/global.dart';
 import 'package:flutter_book/go/testgo.dart';
 
 // final RouteObserver<PageRoute> routeObserver =RouteObserver<PageRoute>();
@@ -10,6 +11,7 @@ class IndexGo extends StatelessWidget {
     return MaterialApp(
       title: 'eBook',
       // navigatorObservers: [routeObserver],
+      navigatorKey: GlobalNavigator.navigatorKey,
       debugShowCheckedModeBanner: true,
       theme: ThemeData(
         primaryColor: Colors.white,

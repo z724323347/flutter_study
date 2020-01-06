@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_book/global/global.dart';
 import 'package:flutter_book/public.dart';
 import 'root_scene.dart';
 import 'e_color.dart';
@@ -12,6 +13,7 @@ class AppScene extends StatelessWidget {
     return MaterialApp(
       title: 'eBook',
       navigatorObservers: [routeObserver],
+      navigatorKey: GlobalNavigator.navigatorKey,
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         primaryColor: Colors.white,

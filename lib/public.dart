@@ -4,7 +4,7 @@ library public;
  //Vender
 
  //Global
- export 'package:flutter_book/global.dart';
+ export 'package:flutter_book/pref.dart';
 
  //Util
  export 'package:flutter_book/util/event_bus.dart';

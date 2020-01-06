@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-import 'package:flutter_book/global.dart';
 import 'package:flutter_book/public.dart';
 import 'package:flutter_book/util/event_bus.dart';
 import 'user_manager.dart';

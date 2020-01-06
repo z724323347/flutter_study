@@ -1,7 +1,7 @@
 import 'dart:convert';
 
 import 'package:flutter_book/util/event_bus.dart';
-import 'package:flutter_book/global.dart';
+import 'package:flutter_book/pref.dart';
 
 const String EventUserLogin = 'EventUserLogin';
 const String EventUserLogout = 'EventUserLogout';
