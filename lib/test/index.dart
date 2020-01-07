@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_book/util/locale/i18n_utils.dart';
 import 'package:flutter_book/widget/toast/toast.dart';
 
 class TestIndexPage extends StatefulWidget {
@@ -20,9 +21,17 @@ class _TestIndexPageState extends State<TestIndexPage> {
           OutlineButton(
             padding: EdgeInsets.all(10),
             onPressed: () {
-              AnimToast.toast('message',time: 1500, position: ToastPosition.center);
+              AnimToast.toast(I18nUtils.of().message,time: 1500, position: ToastPosition.center);
             },
-            child: Text('AnimToast'),
+            child: Text('AnimToast   ' + I18nUtils.of().about),
+          ),
+
+           OutlineButton(
+            padding: EdgeInsets.all(10),
+            onPressed: () {
+              AnimToast.toast(I18nUtils.of().appUpdateFoundNewVersion('1.0.0'),time: 1500, position: ToastPosition.center);
+            },
+            child: Text( I18nUtils.of().appUpdateFoundNewVersion('1.0.0')),
           )
         ],
       ),
