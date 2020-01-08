@@ -36,12 +36,12 @@ class _ShareImagePageState extends State<ShareImagePage> {
     //   });
     // });
     FluwxUtil.checkInstall();
-    strem  =FluwxUtil.listen();
+    strem  =FluwxUtil.sharelisten();
     strem.onData((v){
       setState(() {
-        FluwxUtil.response = v;
+        FluwxUtil.shareResponse = v;
       });
-        print('errCode FluwxUtil : ' + FluwxUtil.response.errCode.toString());
+        print('errCode FluwxUtil : ' + FluwxUtil.shareResponse.errCode.toString());
     });
     print('FluwxUtil install--- ${FluwxUtil.installWeChat}');
      
