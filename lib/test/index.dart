@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_book/app/app_navigator.dart';
+import 'package:flutter_book/test/wechat_page.dart';
 import 'package:flutter_book/util/locale/i18n_utils.dart';
 import 'package:flutter_book/widget/toast/toast.dart';
 
@@ -32,7 +34,14 @@ class _TestIndexPageState extends State<TestIndexPage> {
               AnimToast.toast(I18nUtils.of().appUpdateFoundNewVersion('1.0.0'),time: 1500, position: ToastPosition.center);
             },
             child: Text( I18nUtils.of().appUpdateFoundNewVersion('1.0.0')),
-          )
+          ),
+          OutlineButton(
+            padding: EdgeInsets.all(10),
+            onPressed: () {
+              AppNavigator.push(context, WechatPage());
+            },
+            child: Text('WeChat'),
+          ),
         ],
       ),
     );

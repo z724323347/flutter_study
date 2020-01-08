@@ -40,6 +40,9 @@ dependencies:
   path_provider: ^0.4.1
   sembast: ^1.13.2
   scoped_model: ^1.0.1  
+  # wechat
+  fluwx: 1.2.1
+  
 
 
 dev_dependencies:
@@ -66,6 +69,7 @@ flutter:
   #  - images/a_dot_ham.jpeg
   assets:
     - img/
+    - img/logo/
     - mock/
 
   # An image asset can refer to one or more resolution-specific "variants", see
