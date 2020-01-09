@@ -15,7 +15,7 @@ class _WechatPageState extends State<WechatPage> {
   @override
   void initState() {
     super.initState();
-    _initFluwx();
+    // _initFluwx();
   }
 
   _initFluwx() async {
@@ -24,7 +24,7 @@ class _WechatPageState extends State<WechatPage> {
     //     doOnAndroid: true,
     //     doOnIOS: true,
     //     universalLink: '');
-    FluwxUtil.setupFluwx();
+    FluwxUtil.setupFluwx(appid: 'wx309c4316e1cab160',universalLink: 'https://zxcomplex.com/');
     // var result = await fluwx.isWeChatInstalled();
     // print("is installed $result");
     // setState(() {
