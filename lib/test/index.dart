@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_book/app/app_navigator.dart';
+import 'package:flutter_book/test/drag_crad_page.dart';
+import 'package:flutter_book/test/flip_card_page.dart';
 import 'package:flutter_book/test/fluwx_util.dart';
 import 'package:flutter_book/test/wechat_page.dart';
 import 'package:flutter_book/util/locale/i18n_utils.dart';
@@ -34,18 +36,26 @@ class _TestIndexPageState extends State<TestIndexPage> {
           OutlineButton(
             padding: EdgeInsets.all(10),
             onPressed: () {
-              AnimToast.toast(I18nUtils.of().message,time: 1500, position: ToastPosition.center);
+              AnimToast.toast(I18nUtils.of().message +'\n' + I18nUtils.of().appUpdateFoundNewVersion('1.0.0'),time: 1500, position: ToastPosition.center);
             },
-            child: Text('AnimToast   ' + I18nUtils.of().about),
+            child: Text('AnimToast   ' + I18nUtils.of().about + I18nUtils.of().appUpdateFoundNewVersion('1.0.0')),
           ),
 
            OutlineButton(
             padding: EdgeInsets.all(10),
             onPressed: () {
-              AnimToast.toast(I18nUtils.of().appUpdateFoundNewVersion('1.0.0'),time: 1500, position: ToastPosition.center);
+              AppNavigator.push(context, FlipCardTestPage());
             },
-            child: Text( I18nUtils.of().appUpdateFoundNewVersion('1.0.0')),
+            child: Text( '/flip_card'),
           ),
+          OutlineButton(
+            padding: EdgeInsets.all(10),
+            onPressed: () {
+              AppNavigator.push(context, DragCradTestPage());
+            },
+            child: Text( '/DragCradTestPage'),
+          ),
+          
           OutlineButton(
             padding: EdgeInsets.all(10),
             onPressed: () {
