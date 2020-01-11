@@ -24,7 +24,6 @@ dependencies:
   carousel_slider: ^1.0.1
   # cached_network_image: ^0.5.1
   shared_preferences: ^0.4.3
-  flutter_webview_plugin: ^0.3.0
   share: ^0.5.3
   fluttertoast: ^2.2.6
   battery: ^0.2.3
@@ -40,6 +39,10 @@ dependencies:
   path_provider: ^0.4.1
   sembast: ^1.13.2
   scoped_model: ^1.0.1  
+  # webview
+  flutter_webview_plugin: 0.3.7
+  # flutter 官方的 WebView 插件
+  webview_flutter: 0.3.15+1
   # wechat
   fluwx: 1.2.1
   #flip
@@ -74,6 +77,7 @@ flutter:
     - img/
     - img/logo/
     - mock/
+    - html/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.io/assets-and-images/#resolution-aware.

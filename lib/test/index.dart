@@ -3,6 +3,8 @@ import 'package:flutter_book/app/app_navigator.dart';
 import 'package:flutter_book/test/drag_crad_page.dart';
 import 'package:flutter_book/test/flip_card_page.dart';
 import 'package:flutter_book/test/fluwx_util.dart';
+import 'package:flutter_book/test/web_view/web_plugin_test.dart';
+import 'package:flutter_book/test/web_view/web_view_test.dart';
 import 'package:flutter_book/test/wechat_page.dart';
 import 'package:flutter_book/util/locale/i18n_utils.dart';
 import 'package:flutter_book/widget/toast/toast.dart';
@@ -54,6 +56,20 @@ class _TestIndexPageState extends State<TestIndexPage> {
               AppNavigator.push(context, DragCradTestPage());
             },
             child: Text( '/DragCradTestPage'),
+          ),
+           OutlineButton(
+            padding: EdgeInsets.all(10),
+            onPressed: () {
+              AppNavigator.push(context, TestWebJs());
+            },
+            child: Text('TestWebJs'),
+          ),
+          OutlineButton(
+            padding: EdgeInsets.all(10),
+            onPressed: () {
+              AppNavigator.push(context, TestWebPluginThirdPartJs());
+            },
+            child: Text('TestWebPluginThirdPartJs'),
           ),
           
           OutlineButton(
