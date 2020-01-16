@@ -3,6 +3,7 @@ import 'package:flutter_book/app/app_navigator.dart';
 import 'package:flutter_book/test/drag_crad_page.dart';
 import 'package:flutter_book/test/flip_card_page.dart';
 import 'package:flutter_book/test/fluwx_util.dart';
+import 'package:flutter_book/test/test_chart.dart';
 import 'package:flutter_book/test/web_view/web_plugin_test.dart';
 import 'package:flutter_book/test/web_view/web_view_test.dart';
 import 'package:flutter_book/test/wechat_page.dart';
@@ -71,6 +72,14 @@ class _TestIndexPageState extends State<TestIndexPage> {
             },
             child: Text('TestWebPluginThirdPartJs'),
           ),
+          OutlineButton(
+            padding: EdgeInsets.all(10),
+            onPressed: () {
+              AppNavigator.push(context, TestChartPage());
+            },
+            child: Text('TestChartPage'),
+          ),
+          
           
           OutlineButton(
             padding: EdgeInsets.all(10),
