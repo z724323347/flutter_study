@@ -76,8 +76,8 @@ class WatchClock extends CustomPainter {
     //绘制大圆
     canvas.drawCircle(_centerOffset, _bigRadius, _bigCirclePaint);
     //绘制圆心
-    _bigCirclePaint.style = PaintingStyle.fill;
-    canvas.drawCircle(_centerOffset, _bigRadius / 20, _bigCirclePaint);
+    _bigCirclePaint.style = PaintingStyle.stroke;
+    canvas.drawCircle(_centerOffset, _bigRadius / 40, _bigCirclePaint);
     //绘制刻度
     for (var i = 0; i < 60; i++) {
       _linePaint.strokeWidth = i % 5 == 0 ? (i % 3 == 0 ? 10 : 4) : 1;

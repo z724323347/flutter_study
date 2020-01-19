@@ -17,14 +17,14 @@ class _FlipCardTestPageState extends State<FlipCardTestPage> {
         body: Column(
           children: <Widget>[
             Expanded(
-              flex: 4,
+              flex: 3,
               child: Card(
-                elevation: 1,
+                elevation: 0.0,
                 margin: EdgeInsets.only(
-                    left: 32.0, right: 32.0, top: 20.0, bottom: 0.0),
-                color: Colors.grey,
+                    left: 32.0, right: 32.0, top: 80.0, bottom: 0.0),
+                // color: Colors.grey,
                 child: FlipCard(
-                  direction: FlipDirection.VERTICAL,
+                  direction: FlipDirection.HORIZONTAL,
                   speed: 1000,
                   onFlipDone: (status) {
                     print(status);
@@ -48,7 +48,7 @@ class _FlipCardTestPageState extends State<FlipCardTestPage> {
                   back: Container(
                     width: MediaQuery.of(context).size.width,
                     decoration: BoxDecoration(
-                      color: Color(0xFF006666),
+                      color: Color(0xFF336633),
                       borderRadius: BorderRadius.all(Radius.circular(8.0)),
                     ),
                     child: Column(
@@ -67,7 +67,7 @@ class _FlipCardTestPageState extends State<FlipCardTestPage> {
             Expanded(
               flex: 1,
               child: Container(
-                color: Colors.blueGrey,
+                color: Colors.transparent,
               ),
             )
           ],

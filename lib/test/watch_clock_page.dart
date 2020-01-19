@@ -89,7 +89,10 @@ class _WatchClockPageState extends State<WatchClockPage> {
               // buildTime(),
               SizedBox(height: 230),
               buildPaint(),
-              buildPaintImage(),
+              Container(
+                alignment: Alignment.center,
+                child: buildPaintImage(),
+              )
               // FadeInImage.assetNetwork(
               //   image: imageUrl,
               //   width: 200,
@@ -148,6 +151,7 @@ class PaintWidget extends CustomPainter {
   double radius = math.min(Screen.width / 8, Screen.width / 8);
   @override
   void paint(Canvas canvas, Size size) {
+    canvas.translate(0, 36);
     int n = 30;
     var range = List<int>.generate(n, (i) => i + 1);
     for (int i in range) {
@@ -176,7 +180,20 @@ class PaintImageWidget extends CustomPainter {
   @override
   void paint(Canvas canvas, Size size) async {
     print('image  --- ${this.image}');
+    // 平移画布
+    canvas.translate(50, 50);
+    //clipRRect 裁剪圆角矩形
+    canvas.clipRRect(
+        RRect.fromRectXY(
+            Rect.fromLTWH(20, 0, image.width - 360.0, 300), 20, 20),
+        doAntiAlias: false);
+    // canvas.clipPath(Path()
+    //   ..moveTo(100, 100)
+    //   ..lineTo(200, 100)
+    //   ..lineTo(200, 200)
+    //   ..lineTo(100, 200));
     canvas.drawImage(this.image, Offset(-Screen.width / 2, -0), _paint);
+    
   }
 
   @override

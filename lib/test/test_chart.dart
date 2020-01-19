@@ -169,7 +169,7 @@ class _TestChartPageState extends State<TestChartPage> {
     );
     return Card(
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
-      margin: EdgeInsets.only(left: 16, right: 16, top: 8, bottom: 8),
+      margin: EdgeInsets.all(8),
       color: Colors.orangeAccent.withOpacity(0.6),
       clipBehavior: Clip.antiAlias,
       borderOnForeground: true,
