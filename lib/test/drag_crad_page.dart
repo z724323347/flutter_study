@@ -81,7 +81,12 @@ class _DragCradTestPageState extends State<DragCradTestPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('DragCradTestPage'),
+        leading: IconButton(
+          onPressed: () => Navigator.pop(context),
+          icon: Icon(Icons.arrow_back_ios),
+          color: Colors.blueGrey,
+        ),
+        title: Text('#每日推荐#',style: TextStyle(color: Colors.blueGrey,fontSize: 18)),
         centerTitle: true,
       ),
       body: Container(
@@ -100,7 +105,7 @@ class _DragCradTestPageState extends State<DragCradTestPage> {
   }
 
   _onHeaderItemClick(ToolBarEntity item) {
-    AnimToast.toast(item.title);
+    AnimToast.toast(item.title,time: 5000);
   }
 
   Widget _createHeader() {

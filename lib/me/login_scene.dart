@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'dart:async';
 
 import 'package:flutter_book/public.dart';
+import 'package:flutter_book/widget/particles/animated_background.dart';
+import 'package:flutter_book/widget/particles/particles_view.dart';
 
 import 'code_button.dart';
 
@@ -73,7 +75,7 @@ class LoginSceneState extends State {
     return Container(
       padding: EdgeInsets.symmetric(horizontal: 8),
       decoration: BoxDecoration(
-        color: EColor.paper,
+        color: EColor.paper.withOpacity(0.4),
         borderRadius: BorderRadius.circular(5),
       ),
       child: TextField(
@@ -93,7 +95,7 @@ class LoginSceneState extends State {
     return Container(
       padding: EdgeInsets.only(left: 8),
       decoration: BoxDecoration(
-        color: EColor.paper,
+        color: EColor.paper.withOpacity(0.4),
         borderRadius: BorderRadius.circular(5),
       ),
       child: Row(
@@ -123,7 +125,11 @@ class LoginSceneState extends State {
   Widget buildBody() {
     return Column(
       children: <Widget>[
-        SizedBox(height: 20),
+        AppBar(
+          backgroundColor: Colors.transparent,
+          elevation: 0.0,
+        ),
+        SizedBox(height: 60),
         Container(
           margin: EdgeInsets.symmetric(horizontal: 15),
           child: Column(
@@ -136,7 +142,7 @@ class LoginSceneState extends State {
               Container(
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(5),
-                  color: EColor.primary,
+                  color: EColor.primary.withOpacity(0.8),
                 ),
                 height: 40,
                 child: FlatButton(
@@ -157,9 +163,15 @@ class LoginSceneState extends State {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('登录'), elevation: 0),
-      backgroundColor: Colors.white,
-      body: buildBody(),
+      // appBar: AppBar(title: Text('登录'), elevation: 0),
+      // backgroundColor: Colors.white,
+      body: Stack(
+        children: <Widget>[
+          Positioned.fill(child: AnimatedBackground()),
+          Positioned.fill(child: ParticlesView(30)),
+          buildBody()
+        ],
+      ),
     );
   }
 }

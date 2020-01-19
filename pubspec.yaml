@@ -48,6 +48,7 @@ dependencies:
   #flip
   flip_card: 0.4.4
   transparent_image: ^0.1.0
+  simple_animations: 1.3.4
   
 
 
