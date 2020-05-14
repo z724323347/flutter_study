@@ -42,7 +42,7 @@ class NeteaseImage extends ImageProvider<NeteaseImage> implements CacheKey {
   int get hashCode => hashValues(id, scale);
 
   @override
-  ImageStreamCompleter load(NeteaseImage key) {
+  ImageStreamCompleter load(NeteaseImage key,encode) {
     return MultiFrameImageStreamCompleter(
         codec: _loadAsync(key), scale: key.scale);
   }

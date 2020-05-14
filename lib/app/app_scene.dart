@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_book/generated/i18n.dart';
+import 'package:flutter_book/generated/l10n.dart';
 import 'package:flutter_book/global/global.dart';
 import 'package:flutter_book/public.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';

@@ -128,8 +128,8 @@ class GlobalNavigator {
 
   /// Pop the top-most route off the navigator that most tightly encloses the
   /// given context.
-  static bool pop<T extends Object>([ T result ]) {
-    return navigatorKey.currentState.pop<T>(result);
+  static void pop<T extends Object>([ T result ]) {
+     navigatorKey.currentState.pop<T>(result);
   }
 
   /// Calls [pop] repeatedly on the navigator that most tightly encloses the
