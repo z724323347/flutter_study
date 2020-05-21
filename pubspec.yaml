@@ -31,7 +31,7 @@ dependencies:
   # cached_network_image: ^0.5.1
   shared_preferences: ^0.5.4
   share: ^0.5.3
-  fluttertoast: ^2.2.6
+  fluttertoast: ^4.0.1
   battery: ^0.2.3
   intl: ^0.16.1
   overlay_support:

@@ -12,6 +12,8 @@ import 'package:flutter_book/util/locale/i18n_utils.dart';
 import 'package:flutter_book/util/sp_util.dart';
 import 'package:flutter_book/widget/toast/toast.dart';
 
+import 'lyric_page.dart';
+
 class TestIndexPage extends StatefulWidget {
   @override
   _TestIndexPageState createState() => _TestIndexPageState();
@@ -98,7 +100,13 @@ class _TestIndexPageState extends State<TestIndexPage> {
             },
             child: Text('WatchClockPage'),
           ),
-          
+          OutlineButton(
+            padding: EdgeInsets.all(10),
+            onPressed: () {
+              AppNavigator.push(context, LyricPage());
+            },
+            child: Text('LyricPage'),
+          ),
           
           OutlineButton(
             padding: EdgeInsets.all(10),
