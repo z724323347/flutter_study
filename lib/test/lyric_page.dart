@@ -15,6 +15,7 @@ class _LyricPageState extends State<LyricPage> {
     super.initState();
   }
 
+  /// 加载歌词数据
   loadData() async {
     var jsonStr =
         await DefaultAssetBundle.of(context).loadString('mock/lyric.txt');
@@ -33,7 +34,9 @@ class _LyricPageState extends State<LyricPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
+      appBar: AppBar(
+        backgroundColor: Colors.white,
+      ),
       body: Stack(
         children: <Widget>[
           Positioned.fill(

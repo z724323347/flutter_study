@@ -37,6 +37,7 @@ class _ReaderSceneState extends State<ReaderScene> with RouteAware{
     // TODO: implement initState
     super.initState();
     articleId =this.widget.articleId;
+    setup();
     pageController.addListener((){
       var offset =pageController.offset;
       var contentWidth =Screen.width;
@@ -48,8 +49,6 @@ class _ReaderSceneState extends State<ReaderScene> with RouteAware{
         nextPage();
       }
     });
-
-    setup();
   }
 
   @override
@@ -74,16 +73,17 @@ class _ReaderSceneState extends State<ReaderScene> with RouteAware{
   }
 
   void setup() async {
-    await SystemChrome.setEnabledSystemUIOverlays([]);
+     SystemChrome.setEnabledSystemUIOverlays([]);
     //  不延迟 ，android 获取topSafeHeight 是错的
-    await Future.delayed(const Duration(milliseconds: 100),(){});
-    SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle.light);
+    // await Future.delayed(const Duration(milliseconds: 100),(){});
+     SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle.light);
 
     topSafeHeight =Screen.topSafeHeight;
-    var article =await fetchArticle(articleId);
+    var _article = await fetchArticle(widget.articleId);
 
     setState(() {
-     this.article = article; 
+     article = _article; 
+     print('article  --$article');
     });
   }
 
@@ -190,7 +190,7 @@ class _ReaderSceneState extends State<ReaderScene> with RouteAware{
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
-          Text(article.title, style:TextStyle(fontSize:fixedFontSize(14),color:EColor.gray)),
+          Text(article.title??'', style:TextStyle(fontSize:fixedFontSize(14),color:EColor.gray)),
           Expanded(child: Container()),
           Row(
             children: <Widget>[
@@ -209,7 +209,9 @@ class _ReaderSceneState extends State<ReaderScene> with RouteAware{
 
   buildContent() {
     if (article == null) {
-      return Container();
+      return Container(
+        color: Colors.yellow,
+      );
     }
 
     return Container(
@@ -241,7 +243,9 @@ class _ReaderSceneState extends State<ReaderScene> with RouteAware{
   @override
   Widget build(BuildContext context) {
     if (article == null) {
-      return Scaffold();
+      return Scaffold(
+        backgroundColor: Colors.grey.shade200,
+      );
     }
     return Scaffold(
       body: Stack(
