@@ -33,17 +33,23 @@ class _LyricPageState extends State<LyricPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(),
       body: Stack(
         children: <Widget>[
           Positioned.fill(
-              child: Image.asset(
-            'img/bookshelf_bg.png',
-            fit: BoxFit.cover,
-          )),
+            child: Image.asset(
+              'img/bookshelf_bg.png',
+              fit: BoxFit.cover,
+            ),
+            // child: Image.network(
+            //   'https://upload-images.jianshu.io/upload_images/3948891-af9f7beb7e186464.png?imageMogr2/auto-orient/strip|imageView2/2/w/1126/format/webp',
+            //   fit: BoxFit.cover,
+            // ),
+          ),
           Positioned.fill(
               child: Lyric(
             lyricList,
-            diameterRatio: 2,
+            diameterRatio: 20,
             selectedTextStyle: TextStyle(color: Colors.white, fontSize: 18),
             unSelectedTextStyle: TextStyle(
               color: Colors.black.withOpacity(.6),
