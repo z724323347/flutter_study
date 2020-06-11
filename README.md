@@ -11,7 +11,9 @@ desktop : flutter run -d macos
 
 flutter_web : flutter run -d chrome
 
-切换到 CanvasKit 渲染 ：flutter run -d chrome --release --dart-define=FLUTTER_WEB_USE_SKIA=true
+切换到 CanvasKit 渲染 : flutter run -d chrome --release --dart-define=FLUTTER_WEB_USE_SKIA=true
+ 
+hostname 多终端查看 : flutter run -d web-server --web-hostname 0.0.0.0 --web-port 8989
 
 node.js 项目生成:
     mkdir node

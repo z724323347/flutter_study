@@ -13,7 +13,7 @@ import 'package:flutter_book/util/sp_util.dart';
 import 'package:flutter_book/widget/toast/toast.dart';
 
 import 'lyric_page.dart';
-import 'dart:html' as html;
+// import 'dart:html' as html;
 
 class TestIndexPage extends StatefulWidget {
   @override
@@ -120,7 +120,7 @@ class _TestIndexPageState extends State<TestIndexPage> {
             padding: EdgeInsets.all(10),
             onPressed: () {
               // AppNavigator.push(context, WechatPage());
-               html.window.history.pushState(null, 'h', '/');
+              //  html.window.history.pushState(null, 'h', '/');
             },
             child: Text(' html.window.history.pushState'),
           ),
