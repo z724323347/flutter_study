@@ -80,7 +80,7 @@ class SectionPlaylist extends StatelessWidget {
             SingleChildScrollView(
               child: Text(
                 playlist["name"],
-                maxLines: 2,
+                maxLines: 1,
                 overflow: TextOverflow.ellipsis,
               ),
             ),

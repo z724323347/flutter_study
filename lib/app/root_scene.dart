@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter_book/util/push_util.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import 'package:flutter_book/public.dart';
@@ -67,6 +68,7 @@ class _RootSceneState extends State<RootScene> {
     setState(() {
       isFinishSetup = true;
     });
+    JPushUtil().initJPush();
   }
 
   @override

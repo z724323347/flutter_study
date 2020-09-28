@@ -247,7 +247,7 @@ class PlaylistSelectorDialog extends StatelessWidget {
             Center(
               child: CircularProgressIndicator(),
             ));
-      },
+      }, loadTask: () {  },
     );
   }
 }
