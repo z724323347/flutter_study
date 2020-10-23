@@ -15,6 +15,7 @@ import 'package:flutter_book/util/sp_util.dart';
 import 'package:flutter_book/widget/toast/toast.dart';
 import 'package:jpush_flutter/jpush_flutter.dart';
 
+import 'keyboard/keyboard_main.dart';
 import 'lyric_page.dart';
 import 'test_hooks.dart';
 // import 'dart:html' as html;
@@ -129,15 +130,23 @@ class _TestIndexPageState extends State<TestIndexPage> {
           OutlineButton(
             padding: EdgeInsets.all(10),
             onPressed: () {
+              AppNavigator.push(context, KeyboardTestPage());
+            },
+            child: Text('KeyboardTest'),
+          ),
+          OutlineButton(
+            padding: EdgeInsets.all(10),
+            onPressed: () {
               // AppNavigator.push(context, WechatPage());
               //  html.window.history.pushState(null, 'h', '/');
               // JPushUtil().openSettings();
-              JPushUtil().isNotificationEnabled().then((value) {
-                ToastUtil.showCenter('isNotificationEnabled  : ${value}');
-                if (!value) {
-                  JPushUtil().openSettings();
-                }
-              });
+              // JPushUtil().isNotificationEnabled().then((value) {
+              //   ToastUtil.showCenter('isNotificationEnabled  : ${value}');
+              //   if (!value) {
+              //     JPushUtil().openSettings();
+              //   }
+              // });
+              JPushUtil().jpush.setAlias('1507bfd3f7744cef66b');
             },
             child: Text('JPushUtil().openSettings'),
           ),

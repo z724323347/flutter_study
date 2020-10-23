@@ -2,8 +2,11 @@ import 'dart:async';
 import 'dart:math';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_book/public.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+
+import 'ts.dart';
 
 class HooksExample extends HookWidget {
   @override
@@ -23,6 +26,9 @@ class HooksExample extends HookWidget {
         buildCounter(counter, context),
         buildCustomHook(context),
         buildUseStream(context),
+        OutlineButton(onPressed: () {
+          AppNavigator.push(context, PopupMenu());
+        }),
       ]),
       floatingActionButton: FloatingActionButton(
         onPressed: () => counter.value++,
