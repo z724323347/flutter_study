@@ -118,11 +118,11 @@ class _TestChartPageState extends State<TestChartPage> {
     var chartBar = ChartBar(
       chartBeans: [
         ChartBean(x: '', y: 70, color: Colors.red),
-        ChartBean(x: '', y: 30, color: Colors.yellow),
+        ChartBean(x: '', y: -30, color: Colors.yellow),
         ChartBean(x: '', y: 40, color: Colors.blue),
         ChartBean(x: '', y: 60, color: Colors.orange),
-        ChartBean(x: '', y: 20, color: Colors.blueGrey),
-        ChartBean(x: '', y: 50, color: Colors.green),
+        ChartBean(x: '', y: -20, color: Colors.blueGrey),
+        ChartBean(x: '', y: -50, color: Colors.green),
         ChartBean(x: '', y: 60, color: Colors.pink),
       ],
       size: Size(MediaQuery.of(context).size.width,
