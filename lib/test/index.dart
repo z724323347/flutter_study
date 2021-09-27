@@ -16,6 +16,7 @@ import 'package:flutter_book/widget/toast/toast.dart';
 import 'package:jpush_flutter/jpush_flutter.dart';
 
 import 'keyboard/keyboard_main.dart';
+import 'list/test_list.dart';
 import 'lyric_page.dart';
 import 'test_hooks.dart';
 // import 'dart:html' as html;
@@ -133,6 +134,13 @@ class _TestIndexPageState extends State<TestIndexPage> {
               AppNavigator.push(context, KeyboardTestPage());
             },
             child: Text('KeyboardTest'),
+          ),
+          OutlineButton(
+            padding: EdgeInsets.all(10),
+            onPressed: () {
+              AppNavigator.push(context, TestListPage());
+            },
+            child: Text('TestListPage'),
           ),
           OutlineButton(
             padding: EdgeInsets.all(10),

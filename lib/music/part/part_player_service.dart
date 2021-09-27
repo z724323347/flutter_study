@@ -9,7 +9,6 @@ import 'package:overlay_support/overlay_support.dart';
 import 'package:flutter_book/model/music.dart';
 import '../channel/channel_media_player.dart';
 
-
 const String PREF_KEY_PLAYING = 'flutter_player_playing';
 
 const String PREF_KEY_PLAYLIST = 'flutter_player_playlist';
@@ -19,8 +18,6 @@ const String PREF_KEY_TOKEN = 'flutter_player_token';
 const String PREF_KEY_PLAY_MODE = 'flutter_player_mode';
 
 MusicPlayer flutterPlay = MusicPlayer._private();
-
-
 
 class MusicPlayer implements ValueNotifier<PlayerControllerState> {
   MusicPlayer._private() : super() {
@@ -263,7 +260,8 @@ class PlayerState extends InheritedModel<PlayerStateAspect> {
   final PlayerControllerState value;
 
   static PlayerState of(BuildContext context, {PlayerStateAspect aspect}) {
-    return context.inheritFromWidgetOfExactType(PlayerState, aspect: aspect);
+    return context.dependOnInheritedWidgetOfExactType<PlayerState>(
+        aspect: aspect);
   }
 
   @override

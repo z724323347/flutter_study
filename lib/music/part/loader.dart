@@ -120,7 +120,8 @@ class Loader<T> extends StatefulWidget {
   final WidgetBuilder loadingBuilder;
 
   static LoaderState<T> of<T>(BuildContext context) {
-    return context.ancestorStateOfType(const TypeMatcher<LoaderState>());
+    return context.findAncestorStateOfType<LoaderState>();
+    // return context.ancestorStateOfType(const TypeMatcher<LoaderState>());
   }
 
   @override
